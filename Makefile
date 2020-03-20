@@ -7,7 +7,7 @@ testnbdev: $(SRC)
 	touch testnbdev
 
 docs_serve: docs
-	cd docs && bundle exec jekyll serve
+	cd docs && ip route get 8.8.8.8 | awk 'NR==1 {print $$NF; exit}' | xargs bundle exec jekyll serve -H 
 
 docs: $(SRC)
 	nbdev_build_docs
